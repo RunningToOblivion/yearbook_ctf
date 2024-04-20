@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: black;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .floating-letter {
+            position: absolute;
+            animation: slide-in 5s ease-in-out;
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translateY(0%);
+            }
+
+            to {
+                transform: translateY(-100vh);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="image-container" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+        <h1 style="top: 10%;"> WIDE PLATO </h1>
+        <img src="password1.png" style="width: 50%; height: 50%;" />
+
+    </div>
+    <!-- I think I have lost the archive for this challenge... I do have a tendency to misspell urls, so it might be that-->
+    <!-- Here : Have this one instead https://raw.githubusercontent.com/RunningToOblivion/yearbook_ctf/main/chall_2.zip -->
+    <!-- PS : Fekh sedsesjuh tui redi iyjui mur, z'kjybyiu kd SoruhSxuv !-->
+    <script defer>
+        // Generate a random letter
+        function generate_letter() {
+            nbletters = document.querySelectorAll(".floating-letter").length
+            if (nbletters > 50) {
+                return
+            }
+            var letters = "T⍑ᒷᓭᒷ ℸ ̣ ⍑╎ᓭℸ ̣ ꖎᒷᓭ ʖᒷリ↸ ╎リ ᔑ ⍑╎⊣⍑ ∴╎リ↸. K╎ᓵꖌ ℸ ̣ ⍑ᒷ ʖᔑꖎꖎ ᓭℸ ̣ ∷ᔑ╎⊣⍑ℸ ̣  ᔑリ↸ ⎓𝙹ꖎꖎ𝙹∴ ℸ ̣ ⍑∷𝙹⚍⊣⍑.";
+            var floatingLetter = document.createElement("div");
+            floatingLetter.classList.add("floating-letter");
+            document.body.appendChild(floatingLetter);
+
+            var randomLetter = letters.charAt(Math.floor(Math.random() * letters.length));
+            floatingLetter.textContent = randomLetter;
+            floatingLetter.style.position = "absolute";
+            floatingLetter.style.fontSize = Math.floor(10 + Math.random() * 20) + "px";
+            floatingLetter.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
+            floatingLetter.style.bottom = "0";
+            floatingLetter.style.color = "rgba(238,130,238,0.7)";
+            setTimeout(function () {
+                floatingLetter.remove();
+            }, 5000);
+            setInterval(generate_letter, 5000 + 5000 * Math.random());
+        }
+        generate_letter()
+        generate_letter()
+        fetch('https://gitoub.com/RunningToOblivion/yearbook_ctf/raw/main/challenge1.zip');
+        generate_letter()
+        generate_letter()
+    </script>
+</body>
+
+</html>
